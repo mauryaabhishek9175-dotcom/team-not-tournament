@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 TEAM NOT TOURNAMENT 🔥</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ff4500;
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s ease;
+            box-shadow: 0 0 20px #ff4500;
+        }
+
+        .cursor-follower {
+            width: 8px;
+            height: 8px;
+            background: #ff4500;
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.15s ease;
+            box-shadow: 0 0 10px #ff4500;
+        }
+
+        .cursor.hover {
+            transform: scale(2);
+            background: rgba(255, 69, 0, 0.2);
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .fire-loader {
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #ff4500 0%, #ff6500 50%, transparent 70%);
+            border-radius: 50%;
+            animation: fireGlow 2s infinite ease-in-out;
+        }
+
+        @keyframes fireGlow {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+        /* Background Effects */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #ff4500;
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 1; }
+        }
+
+        /* Header */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 69, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.5);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #ff4500;
+            text-shadow: 0 0 20px #ff4500;
+            animation: glitch 3s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 98% { transform: translateX(0); }
+            1% { transform: translateX(-2px); }
+            2% { transform: translateX(2px); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff4500, #ff6500);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #ff4500;
+            text-shadow: 0 0 10px #ff4500;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(ellipse at center, rgba(255, 69, 0, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 4rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff4500, #ff6500, #ffff00);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fireText 3s infinite ease-in-out, slideInDown 1s ease-out;
+            text-shadow: 0 0 50px rgba(255, 69, 0, 0.8);
+        }
+
+        @keyframes fireText {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes slideInDown {
+            0% { transform: translateY(-100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            opacity: 0.9;
+            animation: slideInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes slideInUp {
+            0% { transform: translateY(100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .countdown {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease-out 1s both;
+        }
+
+        .countdown-item {
+            text-align: center;
+            background: rgba(255, 69, 0, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 69, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .countdown-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #ff4500;
+            text-shadow: 0 0 20px #ff4500;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeIn 1s ease-out 1.5s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: none;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn i {
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .btn:hover i {
+            transform: scale(1.2);
+            animation: spin 0.8s ease-in-out;
+        }
+
+        .btn-whatsapp:hover i {
+            animation: bounce 0.6s ease-in-out;
+        }
+
+        .btn-youtube:hover i {
+            animation: heartbeat 0.8s ease-in-out;
+        }
+
+        .btn-discord:hover i {
+            animation: swing 0.8s ease-in-out;
+        }
+
+        .btn-instagram:hover i {
+            animation: flash 0.8s ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.3); }
+            100% { transform: rotate(360deg) scale(1.2); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            25% { transform: translateY(-5px) scale(1.1); }
+            50% { transform: translateY(-10px) scale(1.2); }
+            75% { transform: translateY(-5px) scale(1.1); }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1.3); }
+            75% { transform: scale(1.1); }
+        }
+
+        @keyframes swing {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            20% { transform: rotate(15deg) scale(1.1); }
+            40% { transform: rotate(-10deg) scale(1.2); }
+            60% { transform: rotate(5deg) scale(1.1); }
+            80% { transform: rotate(-5deg) scale(1.05); }
+        }
+
+        @keyframes flash {
+            0%, 50%, 100% { opacity: 1; transform: scale(1); }
+            25% { opacity: 0.8; transform: scale(1.2); }
+            75% { opacity: 0.9; transform: scale(1.1); }
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff4500, #ff6500);
+            color: #fff;
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #ff4500;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(255, 69, 0, 0.8);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #ff4500;
+            text-shadow: 0 0 20px #ff4500;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: rgba(255, 69, 0, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 69, 0, 0.3);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 69, 0, 0.3);
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 69, 0, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .info-card:hover::before {
+            animation: shimmer 1s ease;
+        }
+
+        @keyframes shimmer {
+            0% { opacity: 0; transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            50% { opacity: 1; }
+            100% { opacity: 0; transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .info-icon {
+            font-size: 3rem;
+            color: #ff4500;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px #ff4500;
+        }
+
+        .info-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .info-text {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Registration Section */
+        .registration {
+            background: rgba(255, 69, 0, 0.05);
+            padding: 5rem 2rem;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 69, 0, 0.3);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #ff4500;
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Squad Section Styles */
+        .squad-section {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(255, 69, 0, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 69, 0, 0.2);
+        }
+
+        .squad-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff4500;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px #ff4500;
+        }
+
+        .squad-subtitle {
+            text-align: center;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .squad-member {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 69, 0, 0.3);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .squad-member:hover {
+            border-color: #ff4500;
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.2);
+        }
+
+        .member-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #ff4500;
+        }
+
+        .member-header i {
+            font-size: 1.2rem;
+        }
+
+        .member-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .substitute-member {
+            background: rgba(255, 69, 0, 0.1);
+            border: 2px dashed rgba(255, 69, 0, 0.4);
+            position: relative;
+        }
+
+        .substitute-member .member-header {
+            color: #ffaa00;
+        }
+
+        .substitute-member::before {
+            content: 'SUBSTITUTE';
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            background: #ffaa00;
+            color: #000;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .remove-member {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 0, 0, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .remove-member:hover {
+            background: rgba(255, 0, 0, 1);
+            transform: scale(1.1);
+        }
+
+        .add-substitute {
+            border: 2px dashed rgba(255, 69, 0, 0.5) !important;
+            background: transparent !important;
+        }
+
+        .add-substitute:hover {
+            border-color: #ff4500 !important;
+            background: rgba(255, 69, 0, 0.1) !important;
+        }
+
+        @media (max-width: 768px) {
+            .member-inputs {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Rules Section */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .rule-card {
+            background: rgba(255, 69, 0, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 69, 0, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            cursor: none;
+        }
+
+        .rule-card:hover {
+            transform: rotateY(10deg) translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 69, 0, 0.3);
+        }
+
+        .rule-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #ff4500;
+            margin-bottom: 1rem;
+        }
+
+        .rule-text {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 69, 0, 0.3);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-icon {
+            color: #fff;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            color: #ff4500;
+            transform: translateY(-5px) rotate(360deg);
+            text-shadow: 0 0 20px #ff4500;
+        }
+
+        /* Music Control */
+        .music-control {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(255, 69, 0, 0.2);
+            border: 1px solid rgba(255, 69, 0, 0.5);
+            border-radius: 50px;
+            padding: 1rem;
+            cursor: none;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .music-control:hover {
+            background: rgba(255, 69, 0, 0.3);
+            transform: scale(1.1);
+        }
+
+        .music-control i {
+            color: #ff4500;
+            font-size: 1.5rem;
+        }
+
+        .music-control.playing i {
+            animation: musicPulse 1s infinite;
+        }
+
+        @keyframes musicPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); filter: drop-shadow(0 0 10px #ff4500); }
+        }
+
+        /* Audio Loading Indicator */
+        .audio-status {
+            position: fixed;
+            bottom: 6rem;
+            right: 2rem;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 999;
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .countdown {
+                gap: 1rem;
+            }
+            
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 200px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="fire-loader"></div>
+    </div>
+
+    <!-- Background Particles -->
+    <div class="bg-particles"></div>
+
+    <!-- Background Music - Updated for Warriyo Mortals -->
+    <audio id="bgMusic" loop preload="auto" volume="0.3">
+        <!-- Option 1: Local file (recommended) -->
+        <source src="./mortals.mp3" type="audio/mpeg">
+        <source src="./mortals.wav" type="audio/wav">
+        
+        <!-- Option 2: If you have a direct link to Mortals -->
+        <!-- <source src="https://your-audio-host.com/mortals.mp3" type="audio/mpeg"> -->
+        
+        <!-- Fallback for browsers that don't support audio -->
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Audio Status Indicator -->
+    <div class="audio-status" id="audioStatus">Loading Mortals...</div>
+
+    <!-- Music Control -->
+    <div class="music-control" onclick="toggleMusic()">
+        <i id="musicIcon" class="fas fa-volume-up"></i>
+    </div>
+
+    <!-- Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">TEAM NOT</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#register">Register</a></li>
+                <li><a href="#discord">Discord</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1 class="hero-title">🔥 TEAM NOT TOURNAMENT 🔥</h1>
+        <p class="hero-subtitle">India's Most Intense Free Fire Battleground</p>
+        
+        <div class="countdown">
+            <div class="countdown-item">
+                <div class="countdown-number" id="days">00</div>
+                <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="hours">00</div>
+                <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="minutes">00</div>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="seconds">00</div>
+                <div class="countdown-label">Seconds</div>
+            </div>
+        </div>
+
+        <div class="hero-buttons">
+            <a href="https://chat.whatsapp.com/JICAow09xBe0aITAwhE3p7?mode=ac_t" class="btn btn-primary btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> WhatsApp Group
+            </a>
+            <a href="https://www.youtube.com/@team_not_official_77" class="btn btn-secondary btn-youtube">
+                <i class="fab fa-youtube"></i> YouTube Channel
+            </a>
+            <a href="https://discord.gg/Mq3M9JuKqJ" class="btn btn-secondary btn-discord">
+                <i class="fab fa-discord"></i> Discord
+            </a>
+            <a href="https://www.instagram.com/team_not_official_77/" class="btn btn-secondary btn-instagram">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <h2 class="section-title">Tournament Details</h2>
+        <div class="about-grid">
+            <div class="info-card">
+                <i class="info-icon fas fa-trophy"></i>
+                <h3 class="info-title">Prize Pool</h3>
+                <p class="info-text">Available on WhatsApp group</p>
+            </div>
+            <div class="info-card">
+                <i class="info-icon fas fa-calendar"></i>
+                <h3 class="info-title">Date & Time</h3>
+                <p class="info-text">Available on WhatsApp group</p>
+            </div>
+            <div class="info-card">
+                <i class="info-icon fas fa-ticket-alt"></i>
+                <h3 class="info-title">Entry Fee</h3>
+                <p class="info-text">Absolutely FREE</p>
+            </div>
+            <div class="info-card">
+                <i class="info-icon fas fa-mobile-alt"></i>
+                <h3 class="info-title">Device</h3>
+                <p class="info-text">Mobile Only</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="registration section" id="register">
+        <h2 class="section-title">Register Now</h2>
+        <div class="form-container">
+            <form id="registrationForm">
+                <div class="form-group">
+                    <input type="text" class="form-input" id="teamName" placeholder="Team Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" id="captainName" placeholder="Captain Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" id="freeFireUID" placeholder="Captain's Free Fire UID" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" class="form-input" id="whatsappNumber" placeholder="Captain's WhatsApp Number" required>
+                </div>
+
+                <!-- Squad Members Section -->
+                <div class="squad-section">
+                    <h3 class="squad-title">Squad Members</h3>
+                    <p class="squad-subtitle">Add your team members (minimum 3 required)</p>
+                    
+                    <div class="squad-members" id="squadMembers">
+                        <!-- Player 2 -->
+                        <div class="squad-member">
+                            <div class="member-header">
+                                <i class="fas fa-user"></i>
+                                <span>Player 2</span>
+                            </div>
+                            <div class="member-inputs">
+                                <input type="text" class="form-input member-name" placeholder="Player 2 Name" required>
+                                <input type="text" class="form-input member-uid" placeholder="Player 2 UID" required>
+                            </div>
+                        </div>
+
+                        <!-- Player 3 -->
+                        <div class="squad-member">
+                            <div class="member-header">
+                                <i class="fas fa-user"></i>
+                                <span>Player 3</span>
+                            </div>
+                            <div class="member-inputs">
+                                <input type="text" class="form-input member-name" placeholder="Player 3 Name" required>
+                                <input type="text" class="form-input member-uid" placeholder="Player 3 UID" required>
+                            </div>
+                        </div>
+
+                        <!-- Player 4 -->
+                        <div class="squad-member">
+                            <div class="member-header">
+                                <i class="fas fa-user"></i>
+                                <span>Player 4</span>
+                            </div>
+                            <div class="member-inputs">
+                                <input type="text" class="form-input member-name" placeholder="Player 4 Name" required>
+                                <input type="text" class="form-input member-uid" placeholder="Player 4 UID" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add Substitute Button -->
+                    <button type="button" class="btn btn-secondary add-substitute" id="addSubstitute" style="width: 100%; justify-content: center; margin-top: 1rem;">
+                        <i class="fas fa-user-plus"></i> Add Substitute (Optional)
+                    </button>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 2rem;">
+                    <i class="fas fa-rocket"></i> Register Team
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Rules Section -->
+    <section class="section" id="rules">
+        <h2 class="section-title">Tournament Rules</h2>
+        <div class="rules-grid">
+            <div class="rule-card">
+                <div class="rule-number">01</div>
+                <p class="rule-text">Teams must consist of 4 players with 2 substitutes maximum</p>
+            </div>
+            <div class="rule-card">
+                <div class="rule-number">02</div>
+                <p class="rule-text">Only mobile devices are allowed, no emulators permitted</p>
+            </div>
+            <div class="rule-card">
+                <div class="rule-number">03</div>
+                <p class="rule-text">All matches will be played in Custom Room mode</p>
+            </div>
+            <div class="rule-card">
+                <div class="rule-number">04</div>
+                <p class="rule-text">Screenshots required for kills and final position proof</p>
+            </div>
+            <div class="rule-card">
+                <div class="rule-number">05</div>
+                <p class="rule-text">Any form of hacking or cheating will result in disqualification</p>
+            </div>
+            <div class="rule-card">
+                <div class="rule-number">06</div>
+                <p class="rule-text">Team must join Discord voice channel during matches</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/team_not_official_77/" class="social-icon instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.youtube.com/@team_not_official_77" class="social-icon youtube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://discord.gg/Mq3M9JuKqJ" class="social-icon discord">
+                <i class="fab fa-discord"></i>
+            </a>
+            <a href="https://chat.whatsapp.com/JICAow09xBe0aITAwhE3p7?mode=ac_t" class="social-icon whatsapp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+        <p>&copy; 2025 TEAM NOT TOURNAMENT. All rights reserved.</p>
+        <p>Organized by <span style="color: #ff4500;">TEAM NOT OFFICIAL</span></p>
+        <p>Contact via WhatsApp Group for more details</p>
+    </footer>
+
+    <script>
+        // Discord Webhook URL (Replace with your actual webhook URL)
+        const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1407733155074543736/rKplXhkx5V6q8PBHHMZirrFPFVd6pPoZdgju_tmxBFjMwtj8UM0P-wRFguNe8K0X3-M7";
+
+        // Function to send Discord notification
+        async function sendToDiscord(teamData) {
+            // Build squad members text
+            let squadText = `👑 **Captain:** ${teamData.captain} (${teamData.captainUID})\n`;
+            teamData.members.forEach((member, index) => {
+                const memberNum = index + 2;
+                const isSubstitute = member.isSubstitute ? ' (SUB)' : '';
+                squadText += `👤 **Player ${memberNum}:** ${member.name} (${member.uid})${isSubstitute}\n`;
+            });
+
+            const embed = {
+                title: "🔥 TEAM NOT TOURNAMENT REGISTRATION 🔥",
+                color: 16738048, // Orange color
+                fields: [
+                    {
+                        name: "🧾 Team Name",
+                        value: teamData.team,
+                        inline: false
+                    },
+                    {
+                        name: "📱 Captain's WhatsApp",
+                        value: teamData.phone,
+                        inline: true
+                    },
+                    {
+                        name: "👥 Total Players",
+                        value: `${teamData.members.length + 1} players`,
+                        inline: true
+                    },
+                    {
+                        name: "🎮 Squad Members",
+                        value: squadText,
+                        inline: false
+                    }
+                ],
+                footer: {
+                    text: "Team Not Tournament Registration System"
+                },
+                timestamp: new Date().toISOString()
+            };
+
+            const payload = {
+                content: "🚨 **NEW TEAM REGISTRATION** 🚨",
+                embeds: [embed]
+            };
+
+            try {
+                const response = await fetch(DISCORD_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    return { success: true };
+                } else {
+                    console.error('Discord webhook error:', response.status, response.statusText);
+                    return { success: false, error: `HTTP ${response.status}` };
+                }
+            } catch (error) {
+                console.error('Network error:', error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        // Audio Management - Enhanced for Mortals
+        let isMusicPlaying = false;
+        let audioLoaded = false;
+        const bgMusic = document.getElementById('bgMusic');
+        const musicIcon = document.getElementById('musicIcon');
+        const audioStatus = document.getElementById('audioStatus');
+        const musicControl = document.querySelector('.music-control');
+
+        // Audio event listeners
+        bgMusic.addEventListener('loadstart', () => {
+            audioStatus.style.display = 'block';
+            audioStatus.textContent = 'Loading Mortals...';
+        });
+
+        bgMusic.addEventListener('canplaythrough', () => {
+            audioLoaded = true;
+            audioStatus.textContent = 'Mortals Ready!';
+            setTimeout(() => {
+                audioStatus.style.display = 'none';
+            }, 2000);
+        });
+
+        bgMusic.addEventListener('error', (e) => {
+            console.log('Audio loading failed:', e);
+            audioStatus.textContent = 'Audio file not found - Please add mortals.mp3';
+            audioStatus.style.color = '#ff6b6b';
+        });
+
+        bgMusic.addEventListener('play', () => {
+            musicControl.classList.add('playing');
+        });
+
+        bgMusic.addEventListener('pause', () => {
+            musicControl.classList.remove('playing');
+        });
+
+        function toggleMusic() {
+            if (!audioLoaded) {
+                audioStatus.style.display = 'block';
+                audioStatus.textContent = 'Audio not ready yet...';
+                setTimeout(() => audioStatus.style.display = 'none', 2000);
+                return;
+            }
+
+            if (isMusicPlaying) {
+                bgMusic.pause();
+                musicIcon.className = 'fas fa-volume-mute';
+                isMusicPlaying = false;
+            } else {
+                bgMusic.play().then(() => {
+                    musicIcon.className = 'fas fa-volume-up';
+                    isMusicPlaying = true;
+                }).catch(e => {
+                    console.log('Audio play failed:', e);
+                    audioStatus.style.display = 'block';
+                    audioStatus.textContent = 'Click anywhere to enable audio';
+                    audioStatus.style.color = '#ffaa00';
+                });
+            }
+        }
+
+        // Auto-start music with user interaction
+        let musicStarted = false;
+        document.addEventListener('click', () => {
+            if (!musicStarted && audioLoaded) {
+                bgMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    musicIcon.className = 'fas fa-volume-up';
+                    musicStarted = true;
+                }).catch(e => {
+                    console.log('Auto-play failed:', e);
+                });
+            }
+        }, { once: true });
+
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.preloader').classList.add('hidden');
+            }, 2000);
+        });
+
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const follower = document.querySelector('.cursor-follower');
+
+        let mouseX = 0;
+        let mouseY = 0;
+        let followerX = 0;
+        let followerY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursor.style.left = mouseX + 'px';
+            cursor.style.top = mouseY + 'px';
+        });
+
+        setInterval(() => {
+            followerX += (mouseX - followerX) * 0.1;
+            followerY += (mouseY - followerY) * 0.1;
+            follower.style.left = followerX + 'px';
+            follower.style.top = followerY + 'px';
+        }, 16);
+
+        // Cursor hover effects
+        document.querySelectorAll('a, button, .btn, .info-card, .rule-card').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+            });
+        });
+
+        // Background particles
+        function createParticles() {
+            const particlesContainer = document.querySelector('.bg-particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (3 + Math.random() * 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+            // Set tournament date (example: 30 days from now)
+            const tournamentDate = new Date();
+            tournamentDate.setDate(tournamentDate.getDate() + 30);
+            
+            const now = new Date().getTime();
+            const distance = tournamentDate.getTime() - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Squad Management Functions
+        let substituteCount = 0;
+        const maxSubstitutes = 2;
+
+        // Add substitute member
+        document.getElementById('addSubstitute').addEventListener('click', function() {
+            if (substituteCount >= maxSubstitutes) {
+                alert('Maximum 2 substitutes allowed');
+                return;
+            }
+
+            substituteCount++;
+            const squadContainer = document.getElementById('squadMembers');
+            const substituteDiv = document.createElement('div');
+            substituteDiv.className = 'squad-member substitute-member';
+            substituteDiv.innerHTML = `
+                <button type="button" class="remove-member" onclick="removeMember(this)">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="member-header">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Substitute ${substituteCount}</span>
+                </div>
+                <div class="member-inputs">
+                    <input type="text" class="form-input member-name" placeholder="Substitute ${substituteCount} Name">
+                    <input type="text" class="form-input member-uid" placeholder="Substitute ${substituteCount} UID">
+                </div>
+            `;
+
+            squadContainer.appendChild(substituteDiv);
+
+            // Update button text if max reached
+            if (substituteCount >= maxSubstitutes) {
+                this.style.display = 'none';
+            }
+        });
+
+        // Remove substitute member
+        window.removeMember = function(button) {
+            const member = button.parentElement;
+            if (member.classList.contains('substitute-member')) {
+                substituteCount--;
+                member.remove();
+                
+                // Show add substitute button again
+                const addBtn = document.getElementById('addSubstitute');
+                addBtn.style.display = 'flex';
+            }
+        };
+
+        // Form submission with Discord integration and squad support
+        document.getElementById('registrationForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            // Get basic team data
+            const teamData = {
+                team: document.getElementById('teamName').value,
+                captain: document.getElementById('captainName').value,
+                captainUID: document.getElementById('freeFireUID').value,
+                phone: document.getElementById('whatsappNumber').value,
+                members: []
+            };
+
+            // Validate basic data
+            if (!teamData.team || !teamData.captain || !teamData.captainUID || !teamData.phone) {
+                alert('Please fill in all basic team information!');
+                return;
+            }
+
+            // Get squad members
+            const squadMembers = document.querySelectorAll('.squad-member');
+            let requiredPlayersCount = 0;
+
+            squadMembers.forEach((member, index) => {
+                const nameInput = member.querySelector('.member-name');
+                const uidInput = member.querySelector('.member-uid');
+                const isSubstitute = member.classList.contains('substitute-member');
+                
+                if (nameInput.value && uidInput.value) {
+                    teamData.members.push({
+                        name: nameInput.value,
+                        uid: uidInput.value,
+                        isSubstitute: isSubstitute
+                    });
+                    
+                    if (!isSubstitute) {
+                        requiredPlayersCount++;
+                    }
+                } else if (!isSubstitute) {
+                    // Required player fields are empty
+                    alert(`Please fill in Player ${index + 2} information or remove the field!`);
+                    return;
+                }
+            });
+
+            // Validate minimum players (Captain + 2 more = 3 minimum)
+            if (requiredPlayersCount < 2) {
+                alert('Minimum 3 players required (Captain + 2 members)!');
+                return;
+            }
+
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Registering Squad...';
+            submitBtn.disabled = true;
+            submitBtn.style.transform = 'scale(0.95)';
+
+            try {
+                // Send to Discord
+                const result = await sendToDiscord(teamData);
+
+                if (result.success) {
+                    // Success animation
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Squad Registered Successfully!';
+                    submitBtn.style.background = 'linear-gradient(45deg, #00ff00, #32cd32)';
+                    submitBtn.style.boxShadow = '0 0 30px rgba(0, 255, 0, 0.5)';
+                    
+                    // Screen shake effect for success
+                    document.body.style.animation = 'shake 0.5s ease-in-out';
+                    setTimeout(() => {
+                        document.body.style.animation = '';
+                    }, 500);
+
+                    // Reset form after success
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.style.background = 'linear-gradient(45deg, #ff4500, #ff6500)';
+                        submitBtn.style.boxShadow = '0 0 30px rgba(255, 69, 0, 0.5)';
+                        submitBtn.style.transform = 'scale(1)';
+                        submitBtn.disabled = false;
+                        
+                        // Reset form and squad
+                        e.target.reset();
+                        
+                        // Remove substitute members
+                        document.querySelectorAll('.substitute-member').forEach(sub => sub.remove());
+                        substituteCount = 0;
+                        document.getElementById('addSubstitute').style.display = 'flex';
+                    }, 4000);
+                } else {
+                    // Error animation
+                    submitBtn.innerHTML = '<i class="fas fa-times"></i> Registration Failed!';
+                    submitBtn.style.background = 'linear-gradient(45deg, #ff0000, #cc0000)';
+                    submitBtn.style.boxShadow = '0 0 30px rgba(255, 0, 0, 0.5)';
+                    
+                    console.error('Discord webhook failed:', result.error);
+                    alert('Failed to register squad. Please try again or contact support.');
+
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.style.background = 'linear-gradient(45deg, #ff4500, #ff6500)';
+                        submitBtn.style.boxShadow = '0 0 30px rgba(255, 69, 0, 0.5)';
+                        submitBtn.style.transform = 'scale(1)';
+                        submitBtn.disabled = false;
+                    }, 3000);
+                }
+            } catch (error) {
+                // Network error
+                submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Network Error!';
+                submitBtn.style.background = 'linear-gradient(45deg, #ff6600, #cc4400)';
+                
+                console.error('Network error:', error);
+                alert('Network error. Please check your internet connection and try again.');
+
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.style.background = 'linear-gradient(45deg, #ff4500, #ff6500)';
+                    submitBtn.style.transform = 'scale(1)';
+                    submitBtn.disabled = false;
+                }, 3000);
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add glitch effect to random elements
+        function addGlitchEffect() {
+            const glitchElements = document.querySelectorAll('.hero-title, .logo, .section-title');
+            glitchElements.forEach(el => {
+                if (Math.random() < 0.1) {
+                    el.style.animation = 'glitch 0.3s ease-in-out';
+                    setTimeout(() => {
+                        el.style.animation = '';
+                    }, 300);
+                }
+            });
+        }
+
+        setInterval(addGlitchEffect, 3000);
+
+        // Dynamic particle generation
+        setInterval(() => {
+            if (Math.random() < 0.3) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (2 + Math.random() * 2) + 's';
+                document.querySelector('.bg-particles').appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 4000);
+            }
+        }, 1000);
+
+        // Add electric spark effect on hover
+        document.querySelectorAll('.btn, .info-card, .rule-card').forEach(el => {
+            el.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 0 50px rgba(255, 69, 0, 0.8), inset 0 0 20px rgba(255, 69, 0, 0.2)';
+            });
+            
+            el.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '';
+            });
+        });
+
+        // Typing effect for hero subtitle
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect after page load
+        setTimeout(() => {
+            const subtitle = document.querySelector('.hero-subtitle');
+            const originalText = subtitle.textContent;
+            typeWriter(subtitle, originalText, 80);
+        }, 2000);
+
+        // Add screen shake effect for dramatic moments
+        function screenShake() {
+            document.body.style.animation = 'shake 0.5s ease-in-out';
+            setTimeout(() => {
+                document.body.style.animation = '';
+            }, 500);
+        }
+
+        // Add shake keyframe
+        const shakeKeyframes = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+                20%, 40%, 60%, 80% { transform: translateX(2px); }
+            }
+        `;
+        const style = document.createElement('style');
+        style.textContent = shakeKeyframes;
+        document.head.appendChild(style);
+
+        // Trigger screen shake on certain interactions
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+            btn.addEventListener('click', screenShake);
+        });
+
+        // Add flame trail cursor effect
+        document.addEventListener('mousemove', (e) => {
+            const flame = document.createElement('div');
+            flame.style.position = 'fixed';
+            flame.style.left = e.clientX + 'px';
+            flame.style.top = e.clientY + 'px';
+            flame.style.width = '4px';
+            flame.style.height = '4px';
+            flame.style.background = '#ff4500';
+            flame.style.borderRadius = '50%';
+            flame.style.pointerEvents = 'none';
+            flame.style.zIndex = '9997';
+            flame.style.opacity = '0.8';
+            flame.style.transition = 'all 0.5s ease-out';
+            
+            document.body.appendChild(flame);
+            
+            setTimeout(() => {
+                flame.style.opacity = '0';
+                flame.style.transform = 'scale(0)';
+                setTimeout(() => flame.remove(), 500);
+            }, 100);
+        });
+
+        // Enhanced hover effects for social icons
+        document.querySelectorAll('.social-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', function() {
+                this.style.filter = 'drop-shadow(0 0 20px currentColor)';
+            });
+            
+            icon.addEventListener('mouseleave', function() {
+                this.style.filter = '';
+            });
+        });
+
+        // Add floating animation to countdown items
+        document.querySelectorAll('.countdown-item').forEach((item, index) => {
+            item.style.animation = `float 3s ease-in-out infinite`;
+            item.style.animationDelay = index * 0.2 + 's';
+        });
+
+        // Add floating keyframe
+        const floatingKeyframes = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+            }
+        `;
+        const floatStyle = document.createElement('style');
+        floatStyle.textContent = floatingKeyframes;
+        document.head.appendChild(floatStyle);
+
+        // Performance optimization: Throttle scroll events
+        let ticking = false;
+        function updateOnScroll() {
+            // Parallax effect for hero section
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateOnScroll);
+                ticking = true;
+            }
+        });
+
+        // Console easter egg
+        console.log(`
+        🔥🔥🔥 TEAM NOT TOURNAMENT 🔥🔥🔥
+        
+        Welcome to the most intense Free Fire tournament!
+        Now featuring Warriyo - Mortals soundtrack!
+        Discord integration: ACTIVE ✅
+        
+        Looking for Easter eggs? You found one! 
+        Type 'teamnotpower()' in console for a surprise!
+        `);
+
+        // Console command easter egg
+        window.teamnotpower = function() {
+            document.body.style.animation = 'rainbow 2s infinite';
+            const rainbowKeyframes = `
+                @keyframes rainbow {
+                    0% { filter: hue-rotate(0deg); }
+                    100% { filter: hue-rotate(360deg); }
+                }
+            `;
+            const rainbowStyle = document.createElement('style');
+            rainbowStyle.textContent = rainbowKeyframes;
+            document.head.appendChild(rainbowStyle);
+            
+            setTimeout(() => {
+                document.body.style.animation = '';
+            }, 4000);
+            
+            console.log('🌈 RAINBOW POWER ACTIVATED! 🌈');
+        };
+
+        // Audio visualization effect (when Mortals is playing)
+        let visualizerInterval;
+        bgMusic.addEventListener('play', () => {
+            visualizerInterval = setInterval(() => {
+                // Create random particles that sync with music
+                if (Math.random() < 0.7) {
+                    const musicParticle = document.createElement('div');
+                    musicParticle.style.position = 'fixed';
+                    musicParticle.style.left = Math.random() * window.innerWidth + 'px';
+                    musicParticle.style.top = Math.random() * window.innerHeight + 'px';
+                    musicParticle.style.width = '3px';
+                    musicParticle.style.height = '3px';
+                    musicParticle.style.background = '#ffff00';
+                    musicParticle.style.borderRadius = '50%';
+                    musicParticle.style.pointerEvents = 'none';
+                    musicParticle.style.zIndex = '1';
+                    musicParticle.style.boxShadow = '0 0 10px #ffff00';
+                    
+                    document.body.appendChild(musicParticle);
+                    
+                    setTimeout(() => {
+                        musicParticle.remove();
+                    }, 1000);
+                }
+            }, 200);
+        });
+
+        bgMusic.addEventListener('pause', () => {
+            if (visualizerInterval) {
+                clearInterval(visualizerInterval);
+            }
+        });
+    </script>
+
+</body>
+</html>
